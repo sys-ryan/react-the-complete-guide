@@ -48,9 +48,16 @@ const ExpenseForm = () => {
     });
   };
 
-  const test = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
-    console.log(userInput);
+
+    const expenseData = {
+      title: userInput.enteredTitle,
+      amount: userInput.enteredAmount,
+      date: new Date(userInput.enteredDate),
+    };
+
+    console.log(expenseData);
   };
 
   return (
@@ -80,7 +87,7 @@ const ExpenseForm = () => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit" onClick={test}>
+        <button type="submit" onClick={submitHandler}>
           Add Expense
         </button>
       </div>
