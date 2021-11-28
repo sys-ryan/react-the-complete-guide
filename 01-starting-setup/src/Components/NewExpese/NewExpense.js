@@ -14,9 +14,17 @@ const NewExpense = (props) => {
     props.onAddExpense(expenseData);
   };
 
+  const toggleExpenseFormHandler = () => {
+    props.onToggleExpenseForm();
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      <ExpenseForm
+        expenseFormState={props.expenseFormState}
+        onToggleExpenseForm={toggleExpenseFormHandler}
+        onSaveExpenseData={saveExpenseDataHandler}
+      />
     </div>
   );
 };

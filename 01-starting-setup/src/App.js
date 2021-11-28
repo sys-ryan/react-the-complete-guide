@@ -27,11 +27,20 @@ const DUMMY_EXPENSES = [
 
 const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const [expenseFormState, setExpenseFormState] = useState("false");
 
   const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
+  };
+
+  const toggleExpenseFormHandler = () => {
+    if (expenseFormState === "false") {
+      setExpenseFormState("true");
+    } else {
+      setExpenseFormState("false");
+    }
   };
 
   // return React.createElement(
@@ -43,7 +52,11 @@ const App = () => {
 
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      <NewExpense
+        expenseFormState={expenseFormState}
+        onToggleExpenseForm={toggleExpenseFormHandler}
+        onAddExpense={addExpenseHandler}
+      />
       <Expenses expenses={expenses} />
     </div>
   );
